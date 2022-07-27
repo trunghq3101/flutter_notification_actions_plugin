@@ -2,6 +2,16 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'notification_actions_method_channel.dart';
 
+class NotificationActionsMessage {
+  final int? value;
+
+  NotificationActionsMessage({this.value});
+
+  factory NotificationActionsMessage.fromMap(Map<String, dynamic> map) {
+    return NotificationActionsMessage(value: map['value']);
+  }
+}
+
 abstract class NotificationActionsPlatform extends PlatformInterface {
   /// Constructs a NotificationActionsPlatform.
   NotificationActionsPlatform() : super(token: _token);
@@ -24,7 +34,7 @@ abstract class NotificationActionsPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    return _instance.getPlatformVersion();
+  Future<Map<String, dynamic>?> getInitialMessage() async {
+    return _instance.getInitialMessage();
   }
 }

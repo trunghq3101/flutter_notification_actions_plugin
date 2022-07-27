@@ -10,8 +10,8 @@ class MethodChannelNotificationActions extends NotificationActionsPlatform {
   final methodChannel = const MethodChannel('notification_actions');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<Map<String, dynamic>?> getInitialMessage() async {
+    return await methodChannel
+        .invokeMapMethod<String, dynamic>('getInitialMessage');
   }
 }

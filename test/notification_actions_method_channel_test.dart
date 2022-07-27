@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:notification_actions/notification_actions_method_channel.dart';
 
 void main() {
-  MethodChannelNotificationActions platform = MethodChannelNotificationActions();
+  MethodChannelNotificationActions platform =
+      MethodChannelNotificationActions();
   const MethodChannel channel = MethodChannel('notification_actions');
 
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +19,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+  test('getInitialMessage', () async {
+    expect(await platform.getInitialMessage(), '42');
   });
 }
